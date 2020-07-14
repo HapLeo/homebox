@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>HomeBox - 500ERROR</title>
+</head>
+
+<body>
+    <div>服务器错误...</div>
+    <div id="msg"></div>
+</body>
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
+<script>
+    $.ajax({
+        url:'/file/copyAll?groupType=DATE_FORMAT_YYYY_MM_DD',
+        method:'post',
+        success:function (result) {
+            $('#msg').html(result);
+        },
+        error:function (result) {
+            alert("error");
+        }
+    });
+</script>
+</html>
