@@ -9,18 +9,32 @@
 <body>
     <div>欢迎来到HOMEBOX的世界</div>
     <div id="msg"></div>
+    <form id="copyAll">
+        来源路径：<input type="text" name="fromPath">
+        目标路径：<input type="text" name="toPath">
+        分组类型：<select name="groupType">
+                    <option value="NONE">NONE</option>
+                    <option value="DATE_FORMAT_YYYY">年</option>
+                    <option value="DATE_FORMAT_YYYY_MM">年-月</option>
+                    <option value="DATE_FORMAT_YYYY_MM_DD">年-月-日</option>
+                </select>
+        <button id="submit">提交</button>
+    </form>
 </body>
 <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
 <script>
-    $.ajax({
-        url:'/file/copyAll?groupType=DATE_FORMAT_YYYY_MM_DD',
-        method:'post',
-        success:function (result) {
-            $('#msg').html(result);
-        },
-        error:function (result) {
-            alert("error");
-        }
+    $('#submit').click(function () {
+        $.ajax({
+            url:'/file/copyAll',
+            method:'post',
+            data:$('#copyAll').serialize(),
+            success:function (result) {
+                $('#msg').html(result);
+            },
+            error:function (result) {
+                alert("error");
+            }
+        });
     });
 </script>
 </html>
