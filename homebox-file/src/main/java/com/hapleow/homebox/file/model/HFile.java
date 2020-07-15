@@ -24,7 +24,7 @@ public class HFile {
     /**
      * 文件唯一编号
      */
-    private String fileUUID;
+    private String fileUuid;
 
     /**
      * 文件大小
