@@ -18,6 +18,7 @@
 
     <modules>
         <module>homebox-file</module>
+        <module>homebox-codge</module>
     </modules>
 
     <properties>
