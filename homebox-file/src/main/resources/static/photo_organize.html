@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title>相册整理</title>
+    <link rel="shortcut icon" href="favicon.ico"> <link href="css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="css/font-awesome.css?v=4.4.0" rel="stylesheet">
+    <link href="js/plugins/fancybox/jquery.fancybox.css" rel="stylesheet">
+    <link href="css/animate.css" rel="stylesheet">
+    <link href="css/style.css?v=4.1.0" rel="stylesheet">
+
+</head>
+
+<body class="gray-bg">
+    <div class="wrapper wrapper-content">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <div class="ibox-tools">
+                            <a class="collapse-link">
+                                <i class="fa fa-chevron-up"></i>
+                            </a>
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="photo_organize.html#">
+                                <i class="fa fa-wrench"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-user">
+                                <li><a href="basic_gallery.html#">选项1</a>
+                                </li>
+                                <li><a href="basic_gallery.html#">选项2</a>
+                                </li>
+                            </ul>
+                            <a class="close-link">
+                                <i class="fa fa-times"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+                        <form id="copyAll">
+                            <div class="row form-group">
+                                <div class="col-sm-1">
+                                    <label class="form-control">来源路径：</label>
+                                </div>
+                                <div class="col-sm-4">
+                                    <input class="form-control" type="text" name="fromPath">
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col-sm-1">
+                                    <label class="form-control">目标路径：</label>
+                                </div>
+                                <div class="col-sm-4">
+                                    <input class="form-control" type="text" name="toPath">
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col-sm-1">
+                                    <label class="form-control">分组类型：</label>
+                                </div>
+                                <div class="col-sm-4">
+                                    <select name="groupType" class="form-control">
+                                        <option value="NONE">NONE</option>
+                                        <option value="DATE_FORMAT_YYYY">年</option>
+                                        <option value="DATE_FORMAT_YYYY_MM">年-月</option>
+                                        <option value="DATE_FORMAT_YYYY_MM_DD">年-月-日</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <button class="btn btn-success" id="submit">提交</button>
+                        </form>
+
+                        <div id="msg"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- 全局js -->
+    <script src="js/jquery.min.js?v=2.1.4"></script>
+    <script src="js/bootstrap.min.js?v=3.3.6"></script>
+
+
+
+    <!-- Peity -->
+    <script src="js/plugins/peity/jquery.peity.min.js"></script>
+
+    <!-- 自定义js -->
+    <script src="js/content.js?v=1.0.0"></script>
+
+
+    <!-- Fancy box -->
+    <script src="js/plugins/fancybox/jquery.fancybox.js"></script>
+
+
+    <script>
+        $(document).ready(function () {
+            $('.fancybox').fancybox({
+                openEffect: 'none',
+                closeEffect: 'none'
+            });
+
+            $('#submit').click(function () {
+                $.ajax({
+                    url:'/file/copyAll',
+                    method:'post',
+                    data:$('#copyAll').serialize(),
+                    success:function (result) {
+                        $('#msg').html(result);
+                    },
+                    error:function (result) {
+                        alert("error");
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
