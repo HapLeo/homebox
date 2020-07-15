@@ -5,12 +5,12 @@ package com.hapleow.homebox.file.enumeration;
  * @author wuyulin
  * @date 2020/7/14
  */
-public enum GroupType {
+public enum GroupStrategy {
 
     /**
-     * 不分组
+     * 单文件夹
      */
-    NONE,
+    SINGLE_DIR,
 
     /**
      * 年

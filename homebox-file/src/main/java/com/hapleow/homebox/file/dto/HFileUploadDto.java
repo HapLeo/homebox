@@ -2,24 +2,17 @@ package com.hapleow.homebox.file.dto;
 
 import com.hapleow.homebox.file.enumeration.GroupStrategy;
 import com.hapleow.homebox.file.enumeration.StorageStrategy;
+import com.hapleow.homebox.file.model.HFile;
 import lombok.Data;
 
 /**
  * @author wuyulin
- * @date 2020/7/14
+ * @date 2020/7/15
  */
 @Data
-public class FileCopyAllDto {
+public class HFileUploadDto {
 
-    /**
-     * 源目录
-     */
-    private String fromPath;
-
-    /**
-     * 目标目录
-     */
-    private String toPath;
+    private HFile hFile;
 
     /**
      * 分组策略
@@ -30,5 +23,4 @@ public class FileCopyAllDto {
      * 保存策略
      */
     private StorageStrategy storageStrategy;
-
 }

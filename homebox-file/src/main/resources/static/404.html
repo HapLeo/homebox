@@ -13,7 +13,7 @@
 <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
 <script>
     $.ajax({
-        url:'/file/copyAll?groupType=DATE_FORMAT_YYYY_MM',
+        url:'/file/copyAll?groupStrategy=DATE_FORMAT_YYYY_MM',
         method:'post',
         success:function (result) {
             $('#msg').html(result);
