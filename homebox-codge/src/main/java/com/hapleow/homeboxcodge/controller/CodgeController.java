@@ -17,8 +17,8 @@ public class CodgeController {
     private ICodgeService codgeService;
 
 
-    @RequestMapping("/tables")
-    public Object tables(){
-        return codgeService.listTables();
+    @RequestMapping("/execute")
+    public Object execute() {
+        return codgeService.execute();
     }
 }

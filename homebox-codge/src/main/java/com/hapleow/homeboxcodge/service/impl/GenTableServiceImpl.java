@@ -1,5 +1,6 @@
 package com.hapleow.homeboxcodge.service.impl;
 
+import com.hapleow.homeboxcodge.common.StringUtil;
 import com.hapleow.homeboxcodge.dao.GenColumnMapper;
 import com.hapleow.homeboxcodge.dao.GenTableMapper;
 import com.hapleow.homeboxcodge.model.GenColumn;
@@ -8,6 +9,7 @@ import com.hapleow.homeboxcodge.service.IGenTableService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -31,6 +33,10 @@ public class GenTableServiceImpl implements IGenTableService {
             genColumn.setTableName(item.getTableName());
             List<GenColumn> genColumns = genColumnMapper.list(genColumn);
             item.setGenColumns(genColumns);
+            item.setTableNameVariable(StringUtil.underlineToCamel(item.getTableName()));
+            item.setTableNameClass(StringUtil.firstLatterUpperCamel(item.getTableName()));
+            item.setCreateTime(LocalDateTime.now());
+            item.setAuthor("wyl");
         });
         return list;
     }

@@ -1,5 +1,6 @@
 package com.hapleow.homeboxcodge.service.impl;
 
+import com.hapleow.homeboxcodge.common.StringUtil;
 import com.hapleow.homeboxcodge.dao.GenColumnMapper;
 import com.hapleow.homeboxcodge.model.GenColumn;
 import com.hapleow.homeboxcodge.service.IGenColumnService;
@@ -21,6 +22,12 @@ public class GenColumnServiceImpl implements IGenColumnService {
     @Override
     public List<GenColumn> list(GenColumn genColumn) {
 
-        return genColumnMapper.list(genColumn);
+        List<GenColumn> list = genColumnMapper.list(genColumn);
+        list.forEach(item -> {
+            item.setColumnNameVariable(StringUtil.underlineToCamel(genColumn.getColumnName()));
+            item.setColumnNameClass(StringUtil.firstLatterUpperCamel(genColumn.getColumnName()));
+        });
+
+        return list;
     }
 }

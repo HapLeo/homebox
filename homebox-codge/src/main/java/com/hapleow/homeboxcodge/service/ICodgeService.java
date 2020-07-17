@@ -10,4 +10,6 @@ import java.util.Map;
 public interface ICodgeService {
 
     List<Map<String,Object>> listTables();
+
+    Object execute();
 }
