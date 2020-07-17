@@ -4,7 +4,9 @@
 
 
     <select id="listTables" resultType="map">
-        show tables
+        select table_name, table_comment, create_time, update_time
+        from information_schema.tables
+        where table_schema = (select database())
     </select>
 
 </mapper>
