@@ -40,4 +40,9 @@ public class GenTableServiceImpl implements IGenTableService {
             genColumnMapper.importColumn(tableName);
         }
     }
+
+    @Override
+    public List<GenTable> listFromSchema() {
+        return genTableMapper.listFromSchema();
+    }
 }

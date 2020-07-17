@@ -19,5 +19,5 @@ public class GenTable {
 
     private String tableComment;
 
-    private List<GenColumn> genColumnList;
+    private List<GenColumn> genColumns;
 }

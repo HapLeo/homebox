@@ -3,22 +3,27 @@
 <mapper namespace="com.hapleow.homeboxcodge.dao.GenColumnMapper">
 
     <select id="list" resultType="com.hapleow.homeboxcodge.model.GenColumn">
-        select table_name    as tableName,
-               table_comment as tableComment
-        from gen_table
+        select
+            column_id      as columnId,
+            column_name    as columnName,
+            column_comment as columnComment
+        from gen_column
     </select>
 
 
     <select id="detail" resultType="com.hapleow.homeboxcodge.model.GenColumn">
-        select table_name    as tableName,
-               table_comment as tableComment
-        from gen_table
-        where table_id = #{id}
+        select
+            column_id      as columnId,
+            column_name    as columnName,
+            column_comment as columnComment
+        from gen_column
+        where column_id = #{id}
     </select>
 
     <insert id="importColumn">
         insert into gen_column(column_name, column_comment)
-        select column_name,column_comment
+        select column_name,
+               column_comment
         from information_schema.columns
         where table_schema = (select database())
           and table_name = (#{tableName})

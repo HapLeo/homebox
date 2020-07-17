@@ -16,4 +16,7 @@ public interface GenTableMapper {
     GenTable detail(Integer id);
 
     void importTable(String[] tables);
+
+    List<GenTable> listFromSchema();
+
 }

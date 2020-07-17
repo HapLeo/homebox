@@ -14,11 +14,11 @@ import org.springframework.web.bind.annotation.RestController;
  * @date 2020/7/17
  */
 @RestController
-@RequestMapping("/table")
+@RequestMapping("/genTable")
 public class GenTableController {
 
     @Autowired
-    private IGenTableService hbTableService;
+    private IGenTableService genTableService;
 
     /**
      * 导入
@@ -27,18 +27,29 @@ public class GenTableController {
      */
     @RequestMapping("/importTable")
     public Object importTable(String tables) {
-        hbTableService.importTable(tables);
+        genTableService.importTable(tables);
         return AjaxResult.success();
     }
 
     /**
      * 列表
-     *
+     * homebox-gen_table下的数据
      * @return
      */
     @RequestMapping("/list")
     public Object list() {
-        return hbTableService.list();
+        return genTableService.list();
+    }
+
+    /**
+     * 列表
+     * information_schema.tables 表中的数据
+     *
+     * @return
+     */
+    @RequestMapping("/listFromSchema")
+    public Object listFromSchema() {
+        return genTableService.listFromSchema();
     }
 
     /**
@@ -48,6 +59,6 @@ public class GenTableController {
      */
     @RequestMapping("/detail/{id}")
     public Object detail(@PathVariable("id") Integer id) {
-        return hbTableService.detail(id);
+        return genTableService.detail(id);
     }
 }

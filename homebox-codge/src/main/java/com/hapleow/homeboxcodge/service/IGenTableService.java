@@ -16,4 +16,6 @@ public interface IGenTableService {
     GenTable detail(Integer id);
 
     void importTable(String tables);
+
+    List<GenTable> listFromSchema();
 }
