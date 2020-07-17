@@ -1,10 +1,10 @@
 package com.hapleow.homeboxcodge.controller;
 
 import com.hapleow.homeboxcodge.common.AjaxResult;
+import com.hapleow.homeboxcodge.model.GenColumn;
 import com.hapleow.homeboxcodge.service.IGenColumnService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -20,8 +20,8 @@ public class GenColumnController {
 
 
     @RequestMapping("/list")
-    public AjaxResult list(@RequestParam("tableName") String tableName) {
+    public AjaxResult list(GenColumn genColumn) {
 
-        return AjaxResult.success(genColumnService.list(tableName));
+        return AjaxResult.success(genColumnService.list(genColumn));
     }
 }

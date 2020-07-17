@@ -19,8 +19,8 @@ public class GenColumnServiceImpl implements IGenColumnService {
     private GenColumnMapper genColumnMapper;
 
     @Override
-    public List<GenColumn> list(String tableName) {
+    public List<GenColumn> list(GenColumn genColumn) {
 
-        return genColumnMapper.list(tableName);
+        return genColumnMapper.list(genColumn);
     }
 }

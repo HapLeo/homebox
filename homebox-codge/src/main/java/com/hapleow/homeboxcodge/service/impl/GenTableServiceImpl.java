@@ -24,10 +24,12 @@ public class GenTableServiceImpl implements IGenTableService {
     private GenColumnMapper genColumnMapper;
 
     @Override
-    public List<GenTable> list() {
-        List<GenTable> list = genTableMapper.list();
+    public List<GenTable> list(GenTable genTable) {
+        List<GenTable> list = genTableMapper.list(genTable);
         list.forEach(item -> {
-            List<GenColumn> genColumns = genColumnMapper.list(item.getTableName());
+            GenColumn genColumn = new GenColumn();
+            genColumn.setTableName(item.getTableName());
+            List<GenColumn> genColumns = genColumnMapper.list(genColumn);
             item.setGenColumns(genColumns);
         });
         return list;

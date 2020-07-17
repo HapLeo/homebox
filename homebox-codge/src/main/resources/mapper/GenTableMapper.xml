@@ -21,6 +21,9 @@
             table_comment as tableComment
         from information_schema.tables
         where table_schema = (select database ())
+        <if test="genTable.tableName != null">
+            and table_name = #{genTable.tableName}
+        </if>
     </select>
 
 </mapper>

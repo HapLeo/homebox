@@ -1,6 +1,7 @@
 package com.hapleow.homeboxcodge.dao;
 
 import com.hapleow.homeboxcodge.model.GenColumn;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -10,6 +11,5 @@ import java.util.List;
  */
 public interface GenColumnMapper {
 
-
-    List<GenColumn> list(String tableName);
+    List<GenColumn> list(@Param("genColumn") GenColumn genColumn);
 }

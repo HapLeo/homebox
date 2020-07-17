@@ -11,6 +11,8 @@ import lombok.Data;
 @Data
 public class GenColumn {
 
+    private String tableName;
+
     private String columnName;
 
     private String columnComment;

@@ -10,5 +10,5 @@ import java.util.List;
  */
 public interface IGenColumnService {
 
-    List<GenColumn> list(String tableName);
+    List<GenColumn> list(GenColumn genColumn);
 }

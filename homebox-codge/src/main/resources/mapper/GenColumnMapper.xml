@@ -4,14 +4,15 @@
 
     <select id="list" resultType="com.hapleow.homeboxcodge.model.GenColumn">
         select
+        table_name as tableName,
         column_name as columnName,
         column_comment as columnComment,
         column_type as columnType,
         column_key as columnKey
         from information_schema.columns
         where table_schema = (select database ())
-        <if test="tableName != null">
-            and table_name = #{tableName}
+        <if test="genColumn.tableName != null">
+            and table_name = #{genColumn.tableName}
         </if>
     </select>
 

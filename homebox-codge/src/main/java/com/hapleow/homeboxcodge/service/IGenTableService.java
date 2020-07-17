@@ -11,5 +11,5 @@ import java.util.List;
 public interface IGenTableService {
 
 
-    List<GenTable> list();
+    List<GenTable> list(GenTable genTable);
 }

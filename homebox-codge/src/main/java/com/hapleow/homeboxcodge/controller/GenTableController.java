@@ -1,6 +1,7 @@
 package com.hapleow.homeboxcodge.controller;
 
 import com.hapleow.homeboxcodge.common.AjaxResult;
+import com.hapleow.homeboxcodge.model.GenTable;
 import com.hapleow.homeboxcodge.service.IGenTableService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,8 +26,8 @@ public class GenTableController {
      * @return
      */
     @RequestMapping("/list")
-    public Object list() {
-        return AjaxResult.success(genTableService.list());
+    public Object list(GenTable genTable) {
+        return AjaxResult.success(genTableService.list(genTable));
     }
 
 }
