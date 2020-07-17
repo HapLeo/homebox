@@ -1,32 +1,27 @@
 package com.hapleow.homeboxcodge.controller;
 
 import com.hapleow.homeboxcodge.common.AjaxResult;
-import com.hapleow.homeboxcodge.service.IGenTableService;
+import com.hapleow.homeboxcodge.service.IGenColumnService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * 表结构信息
- *
  * @author wuyulin
  * @date 2020/7/17
  */
 @RestController
-@RequestMapping("/genTable")
-public class GenTableController {
+@RequestMapping("/genColumn")
+public class GenColumnController {
 
     @Autowired
-    private IGenTableService genTableService;
+    private IGenColumnService genColumnService;
 
-    /**
-     * 列表
-     *
-     * @return
-     */
+
     @RequestMapping("/list")
-    public Object list() {
-        return AjaxResult.success(genTableService.list());
-    }
+    public AjaxResult list(@RequestParam("tableName") String tableName) {
 
+        return AjaxResult.success(genColumnService.list(tableName));
+    }
 }

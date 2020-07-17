@@ -13,8 +13,6 @@ import java.util.List;
 @Data
 public class GenTable {
 
-    private Long tableId;
-
     private String tableName;
 
     private String tableComment;

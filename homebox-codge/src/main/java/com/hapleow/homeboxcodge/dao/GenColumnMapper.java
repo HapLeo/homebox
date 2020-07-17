@@ -11,9 +11,5 @@ import java.util.List;
 public interface GenColumnMapper {
 
 
-    List<GenColumn> list();
-
-    GenColumn detail(Integer id);
-
-    void importColumn(String tableName);
+    List<GenColumn> list(String tableName);
 }

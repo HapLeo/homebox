@@ -12,10 +12,4 @@ public interface IGenTableService {
 
 
     List<GenTable> list();
-
-    GenTable detail(Integer id);
-
-    void importTable(String tables);
-
-    List<GenTable> listFromSchema();
 }

@@ -12,11 +12,4 @@ public interface GenTableMapper {
 
 
     List<GenTable> list();
-
-    GenTable detail(Integer id);
-
-    void importTable(String[] tables);
-
-    List<GenTable> listFromSchema();
-
 }

@@ -11,11 +11,11 @@ import lombok.Data;
 @Data
 public class GenColumn {
 
-    private Long columnId;
-
-    private Long columnTableId;
-
     private String columnName;
 
     private String columnComment;
+
+    private String columnType;
+
+    private String columnKey;
 }

@@ -29,8 +29,24 @@ public class AjaxResult {
         this.data = data;
     }
 
+    /**
+     * 操作成功
+     *
+     * @return
+     */
     public static AjaxResult success() {
 
         return new AjaxResult(SUCCESS, "操作成功", null);
+    }
+
+    /**
+     * 操作成功：指定数据
+     *
+     * @param data
+     * @return
+     */
+    public static AjaxResult success(Object data) {
+
+        return new AjaxResult(SUCCESS, "操作成功", data);
     }
 }

@@ -4,30 +4,15 @@
 
     <select id="list" resultType="com.hapleow.homeboxcodge.model.GenColumn">
         select
-            column_id      as columnId,
-            column_name    as columnName,
-            column_comment as columnComment
-        from gen_column
-    </select>
-
-
-    <select id="detail" resultType="com.hapleow.homeboxcodge.model.GenColumn">
-        select
-            column_id      as columnId,
-            column_name    as columnName,
-            column_comment as columnComment
-        from gen_column
-        where column_id = #{id}
-    </select>
-
-    <insert id="importColumn">
-        insert into gen_column(column_name, column_comment)
-        select column_name,
-               column_comment
+        column_name as columnName,
+        column_comment as columnComment,
+        column_type as columnType,
+        column_key as columnKey
         from information_schema.columns
-        where table_schema = (select database())
-          and table_name = (#{tableName})
-    </insert>
-
+        where table_schema = (select database ())
+        <if test="tableName != null">
+            and table_name = #{tableName}
+        </if>
+    </select>
 
 </mapper>
