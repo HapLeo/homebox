@@ -1,0 +1,9 @@
+/**
+ * @desc ${genTable.tableComment}
+ * @author ${genTable.author}
+ * @date ${genTable.createTime}
+ */
+public class ${genTable.tableNameClass}Model {
+
+
+}

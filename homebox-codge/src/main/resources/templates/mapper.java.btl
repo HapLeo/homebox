@@ -1,5 +1,5 @@
 /**
- * ${genTable.tableComment}
+ * @desc ${genTable.tableComment}
  * @author ${genTable.author}
  * @date ${genTable.createTime}
  */
