@@ -50,9 +50,7 @@ public class CodgeServiceImpl implements ICodgeService {
         // 读取模板目录下得所有模板
         Set<String> templates = getTemplateSet();
 
-        Iterator<String> iterator = templates.iterator();
-        while (iterator.hasNext()) {
-            String templateName = iterator.next();
+        for (String templateName : templates) {
             Map<String, Object> genData = new HashMap<>();
             genData.put("genTable", genTable);
 
