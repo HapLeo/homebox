@@ -12,4 +12,6 @@ public interface IGenTableService {
 
 
     List<GenTable> list(GenTable genTable);
+
+    GenTable getByTableName(String tableName);
 }

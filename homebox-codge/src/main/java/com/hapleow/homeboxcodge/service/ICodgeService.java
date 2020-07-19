@@ -1,7 +1,6 @@
 package com.hapleow.homeboxcodge.service;
 
-import java.util.List;
-import java.util.Map;
+import com.hapleow.homeboxcodge.dto.CodgeDto;
 
 /**
  * @author wuyulin
@@ -9,7 +8,5 @@ import java.util.Map;
  */
 public interface ICodgeService {
 
-    List<Map<String,Object>> listTables();
-
-    Object execute();
+    Object execute(CodgeDto codgeDto);
 }
