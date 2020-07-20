@@ -22,13 +22,13 @@ public class GenColumn {
     private String columnKey;
 
     /**
-     * 表名称（驼峰格式）
+     * 列名称（驼峰格式）
      * 用于生成变量名
      */
     private String columnNameVariable;
 
     /**
-     * 表名称(驼峰格式且首字母大写)
+     * 列名称(驼峰格式且首字母大写)
      * 用于生成类名
      */
     private String columnNameClass;

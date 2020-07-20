@@ -51,4 +51,9 @@ public class GenTable {
      * 创建时间
      */
     private LocalDateTime createTime;
+
+    /**
+     * 创建时间格式化字符串
+     */
+    private String createTimeStr;
 }

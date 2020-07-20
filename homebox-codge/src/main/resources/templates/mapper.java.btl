@@ -1,9 +1,0 @@
-/**
- * @desc ${genTable.tableComment}
- * @author ${genTable.author}
- * @date ${genTable.createTime}
- */
-public interface ${genTable.tableNameClass}Mapper {
-
-    List<${genTable.tableNameClass}> list(@Param("${genTable.tableNameClass}") ${genTable.tableNameClass} ${genTable.tableNameVariable});
-}

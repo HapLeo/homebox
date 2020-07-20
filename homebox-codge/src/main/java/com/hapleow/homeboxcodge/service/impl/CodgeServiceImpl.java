@@ -2,6 +2,7 @@ package com.hapleow.homeboxcodge.service.impl;
 
 import com.hapleow.homeboxcodge.common.ExceptionUtil;
 import com.hapleow.homeboxcodge.common.StringUtil;
+import com.hapleow.homeboxcodge.converter.TypeConverter;
 import com.hapleow.homeboxcodge.dao.CodgeMapper;
 import com.hapleow.homeboxcodge.dto.CodgeDto;
 import com.hapleow.homeboxcodge.model.GenTable;
@@ -18,6 +19,8 @@ import org.springframework.stereotype.Service;
 
 import java.io.*;
 import java.net.URL;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 /**
@@ -40,12 +43,15 @@ public class CodgeServiceImpl implements ICodgeService {
     private String destPath;
 
     @Override
-    public Object execute(CodgeDto codgeDto) {
+    public void execute(CodgeDto codgeDto) {
 
         ExceptionUtil.throwIfEmpty(codgeDto.getTableName(), "请输入表名称~");
 
         GenTable genTable = genTableService.getByTableName(codgeDto.getTableName());
         ExceptionUtil.throwIfEmpty(genTable, "表名不正确！");
+
+        // 格式化数据
+        formatData(genTable);
 
         // 读取模板目录下得所有模板
         Set<String> templates = getTemplateSet();
@@ -58,14 +64,27 @@ public class CodgeServiceImpl implements ICodgeService {
             String content = genFileContent(templateName, genData);
 
             // 文件名
-            String genFileNameSuffix = StringUtil.firstLatterUpperCamel(StringUtil.underlineToCamel(templateName));
-            String suffix = genFileNameSuffix.substring(0, genFileNameSuffix.length() - 4);
-            String fileName = genTable.getTableNameClass() + suffix;
+            String fileName = getFileName(templateName, genTable);
             createFile(destPath, fileName, content);
         }
 
-        return "SUCCESS";
     }
+
+    /**
+     * 格式化数据
+     */
+    private void formatData(GenTable genTable) {
+
+        // 处理日期
+        genTable.setCreateTimeStr(genTable.getCreateTime().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+        // 处理字段类型和变量名
+        genTable.getGenColumns().forEach(item -> {
+            item.setColumnType(TypeConverter.convert(item.getColumnType()));
+            item.setColumnNameVariable(StringUtil.underlineToCamel(item.getColumnName()));
+            item.setColumnNameClass(StringUtil.firstLatterUpperCamel(item.getColumnName()));
+        });
+    }
+
 
     /**
      * 获取模板文件的名称
@@ -113,6 +132,23 @@ public class CodgeServiceImpl implements ICodgeService {
         }
 
 
+    }
+
+    /**
+     * 获取文件名
+     *
+     * @return
+     */
+    private String getFileName(String templateName, GenTable genTable) {
+
+        String genFileNameSuffix = StringUtil.firstLatterUpperCamel(StringUtil.underlineToCamel(templateName));
+        String suffix = genFileNameSuffix.substring(0, genFileNameSuffix.length() - 4);
+
+        // 生成model时,直接yong表名作为文件名
+        if (Objects.equals(suffix,"Model.java")){
+            suffix = ".java";
+        }
+        return genTable.getTableNameClass() + suffix;
     }
 
     /**

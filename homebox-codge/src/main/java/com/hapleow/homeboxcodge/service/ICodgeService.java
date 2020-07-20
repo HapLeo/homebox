@@ -8,5 +8,5 @@ import com.hapleow.homeboxcodge.dto.CodgeDto;
  */
 public interface ICodgeService {
 
-    Object execute(CodgeDto codgeDto);
+    void execute(CodgeDto codgeDto);
 }

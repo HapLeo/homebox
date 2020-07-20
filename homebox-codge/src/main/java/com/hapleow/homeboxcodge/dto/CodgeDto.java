@@ -8,6 +8,10 @@ import lombok.Data;
 @Data
 public class CodgeDto {
 
+    /**
+     * 表名
+     */
     private String tableName;
+
 
 }

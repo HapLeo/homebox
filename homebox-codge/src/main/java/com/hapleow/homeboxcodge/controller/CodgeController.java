@@ -1,5 +1,6 @@
 package com.hapleow.homeboxcodge.controller;
 
+import com.hapleow.homeboxcodge.common.AjaxResult;
 import com.hapleow.homeboxcodge.dto.CodgeDto;
 import com.hapleow.homeboxcodge.service.ICodgeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,8 @@ public class CodgeController {
 
 
     @RequestMapping("/execute")
-    public Object execute(CodgeDto codgeDto) {
-        return codgeService.execute(codgeDto);
+    public AjaxResult execute(CodgeDto codgeDto) {
+        codgeService.execute(codgeDto);
+        return AjaxResult.success();
     }
 }

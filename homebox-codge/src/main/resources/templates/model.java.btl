@@ -1,9 +1,23 @@
-/**
- * @desc ${genTable.tableComment}
- * @author ${genTable.author}
- * @date ${genTable.createTime}
- */
-public class ${genTable.tableNameClass}Model {
+package com.hapleow.homeboxcodge.code;
 
+/**
+ * @author ${genTable.author}
+ * @desc ${genTable.tableComment}
+ * @date ${genTable.createTimeStr}
+ */
+@Data
+public class ${genTable.tableNameClass} {
+
+<%
+for(column in genTable.genColumns){
+
+println("    /**");
+println("     * " + column.columnComment);
+println("     */");
+println("    private " + column.columnType +" " + column.columnNameVariable + ";");
+println();
+}
+
+%>
 
 }
