@@ -5,6 +5,6 @@
     <title>Hello</title>
 </head>
 <body>
-    <div>${name}</div>
+    <div>${genTable.tableNameClass}</div>
 </body>
 </html>

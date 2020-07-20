@@ -1,5 +1,6 @@
 package com.hapleow.homeboxcodge.service.impl;
 
+import com.hapleow.homeboxcodge.common.ExceptionUtil;
 import com.hapleow.homeboxcodge.common.StringUtil;
 import com.hapleow.homeboxcodge.dao.GenColumnMapper;
 import com.hapleow.homeboxcodge.dao.GenTableMapper;
@@ -41,4 +42,15 @@ public class GenTableServiceImpl implements IGenTableService {
         return list;
     }
 
+
+    @Override
+    public GenTable getByTableName(String tableName) {
+        GenTable condition = new GenTable();
+        condition.setTableName(tableName);
+        List<GenTable> list = list(condition);
+        if (list.size() == 0){
+            return null;
+        }
+        return list.get(0);
+    }
 }
