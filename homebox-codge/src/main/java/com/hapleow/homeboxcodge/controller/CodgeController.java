@@ -1,6 +1,8 @@
 package com.hapleow.homeboxcodge.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.hapleow.homeboxcodge.common.AjaxResult;
+import com.hapleow.homeboxcodge.config.CodgeProperties;
 import com.hapleow.homeboxcodge.dto.CodgeDto;
 import com.hapleow.homeboxcodge.service.ICodgeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,10 +20,18 @@ public class CodgeController {
     @Autowired
     private ICodgeService codgeService;
 
+    @Autowired
+    private CodgeProperties codgeProperties;
+
 
     @RequestMapping("/execute")
     public AjaxResult execute(CodgeDto codgeDto) {
         codgeService.execute(codgeDto);
         return AjaxResult.success();
+    }
+
+    @RequestMapping("/getProperties")
+    public Object getProperties(){
+        return JSON.toJSON(codgeProperties);
     }
 }

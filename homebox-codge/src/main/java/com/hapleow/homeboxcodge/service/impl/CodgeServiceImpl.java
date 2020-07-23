@@ -36,7 +36,7 @@ public class CodgeServiceImpl implements ICodgeService {
     @Autowired
     private IGenTableService genTableService;
 
-    @Value("${codge.template.path}")
+    @Value("${codge.template-path}")
     private String templatePath;
 
     @Value("${codge.dest-path}")
